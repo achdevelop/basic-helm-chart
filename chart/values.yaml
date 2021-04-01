@@ -1,0 +1,16 @@
+image:
+  repository: nginx
+  tag: "latest"
+replicaCount: 2
+resources:
+  request:
+    mem: 128Mi
+    cpu: 100m
+  limit:
+    mem: 500Mi
+    cpu: 200m
+  liveness:
+    path: /
+service:
+  type: NodePort
+  port: 80
