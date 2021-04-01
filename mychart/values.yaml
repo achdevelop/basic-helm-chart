@@ -1,7 +1,10 @@
+# Deployment Values
 image:
   repository: nginx
   tag: "latest"
-replicaCount: 2
+replicas: 2
+ports:
+  containerPort: 80
 resources:
   request:
     mem: 128Mi
@@ -11,6 +14,11 @@ resources:
     cpu: 200m
   liveness:
     path: /
+    period: 10
+    delaySeconds: 120
+
+# Service Values
 service:
   type: NodePort
   port: 80
+  targetPort: 80
